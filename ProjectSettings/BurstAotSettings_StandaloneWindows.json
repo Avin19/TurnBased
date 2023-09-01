@@ -1,6 +1,10 @@
 {
   "MonoBehaviour": {
+<<<<<<< HEAD
+    "Version": 4,
+=======
     "Version": 3,
+>>>>>>> origin/master
     "EnableBurstCompilation": true,
     "EnableOptimisations": true,
     "EnableSafetyChecks": false,
@@ -11,6 +15,11 @@
     "CpuMinTargetX64": 0,
     "CpuMaxTargetX64": 0,
     "CpuTargetsX32": 6,
+<<<<<<< HEAD
+    "CpuTargetsX64": 72,
+    "OptimizeFor": 0
+=======
     "CpuTargetsX64": 72
+>>>>>>> origin/master
   }
 }
