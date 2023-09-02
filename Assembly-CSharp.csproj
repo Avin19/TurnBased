@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\Grid\GridObject.cs" />
     <Compile Include="Assets\Script\UnitSelectedVisual.cs" />
     <Compile Include="Assets\Script\Grid\GridDebugObject.cs" />
+    <Compile Include="Assets\Script\Grid\GridSystemVisual.cs" />
     <Compile Include="Assets\Script\UnityActionSystem.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
     <Compile Include="Assets\Script\Grid\LevelGRid.cs" />

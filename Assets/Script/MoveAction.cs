@@ -31,9 +31,9 @@ public class MoveAction : MonoBehaviour
         }
     }
 
-    public void Move(Vector3 targetPosition)
+    public void Move(GridPosition gridPosition)
     {
-        this.targetPosition = targetPosition;
+        this.targetPosition = LevelGRid.Instance.GetWorldPosition(gridPosition);
     }
 
     public bool IsVaildActionGridPosition(GridPosition gridPosition)
