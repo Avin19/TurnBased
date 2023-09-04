@@ -57,12 +57,17 @@
     <Compile Include="Assets\Script\MouseWorldPosition.cs" />
     <Compile Include="Assets\Script\Grid\GridPosition.cs" />
     <Compile Include="Assets\Script\Grid\GridSystem.cs" />
-    <Compile Include="Assets\Script\MoveAction.cs" />
+    <Compile Include="Assets\Script\Action\MoveAction.cs" />
+    <Compile Include="Assets\Script\ActionButtonUI.cs" />
     <Compile Include="Assets\Script\Testing.cs" />
+    <Compile Include="Assets\Script\UnitActionSystemUI.cs" />
     <Compile Include="Assets\Script\Grid\GridObject.cs" />
     <Compile Include="Assets\Script\UnitSelectedVisual.cs" />
     <Compile Include="Assets\Script\Grid\GridDebugObject.cs" />
+    <Compile Include="Assets\Script\Action\BaseAction.cs" />
+    <Compile Include="Assets\Script\Grid\GridSystemVisualSingle.cs" />
     <Compile Include="Assets\Script\Grid\GridSystemVisual.cs" />
+    <Compile Include="Assets\Script\Action\SpinAction.cs" />
     <Compile Include="Assets\Script\UnityActionSystem.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
     <Compile Include="Assets\Script\Grid\LevelGRid.cs" />
@@ -748,6 +753,9 @@
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
