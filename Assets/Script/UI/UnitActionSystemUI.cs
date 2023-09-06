@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class UnitActionSystemUI : MonoBehaviour
 {
     [SerializeField] private Transform pfActionSystemUIButton;
     [SerializeField] private Transform pfActionSystemContainer;
+    [SerializeField] private TextMeshProUGUI actionPointText;
     private List<ActionButtonUI> actionButtonUIList;
     
     private void Awake()
@@ -17,13 +19,31 @@ public class UnitActionSystemUI : MonoBehaviour
     void Start()
     {
         UnityActionSystem.Instance.OnUnitSelection += OnSelectedUnitChanged;
+         UnityActionSystem.Instance.OnSelcetedActionChange += OnSelcetedActionChange;
+         UnityActionSystem.Instance.onActionChanged += OnActionChanged;
         CreateUnitActionButton();
+        UpdateSelectedVisual();
+         UpdateActionPoint();
+       
+
+    }
+
+    private void OnActionChanged(object sender, EventArgs e)
+    {
+        UpdateActionPoint();
+    }
+
+    private void OnSelcetedActionChange(object sender, EventArgs e)
+    {
+        UpdateSelectedVisual();
+         UpdateActionPoint();
     }
 
     private void OnSelectedUnitChanged(object sender, EventArgs e)
     {
         CreateUnitActionButton();
         UpdateSelectedVisual();
+        UpdateActionPoint();
     }
 
     private void CreateUnitActionButton()
@@ -48,6 +68,16 @@ public class UnitActionSystemUI : MonoBehaviour
     }
     private void UpdateSelectedVisual()
     {
+        foreach(ActionButtonUI actionButtonUI in actionButtonUIList)
+        {
+            actionButtonUI.transform.Find("Selected").gameObject.SetActive(false);
+        }
         
+    }
+
+    private void UpdateActionPoint()
+    {
+        Unit selectedunit = UnityActionSystem.Instance.GetSelectedUnit();
+        actionPointText.text = " Action Point : "+ selectedunit.GetActionPoint();
     }
 }

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class ActionButtonUI : MonoBehaviour
 {
     private TextMeshProUGUI textMeshPro;
     private Button button;
     private Transform selectedVisual;
-
+   
     void Awake()
     {
         textMeshPro = transform.Find("Text").GetComponent<TextMeshProUGUI>();
@@ -23,6 +24,7 @@ public class ActionButtonUI : MonoBehaviour
         button .onClick.AddListener(()=>{
             UnityActionSystem.Instance.SetSelectedAction(baseAction);
             selectedVisual.gameObject.SetActive(true);
+          
 
         });
 
