@@ -58,6 +58,11 @@ public class UnityActionSystem : MonoBehaviour
           {
             return;
           }
+          if(!TurnSystem.Instance.IsPlayerTurn())
+          {
+            return;
+          }
+          
           HandleSelectedAction();
 
        
@@ -110,8 +115,14 @@ public class UnityActionSystem : MonoBehaviour
                         // then this unit is already selected 
                         return false;
                     }
-                    SelectedUnit(unit);
 
+                    if(unit.IsEnemy())
+                    {
+
+                        //Clicked on the Emeny
+                        return false;
+                    }
+                    SelectedUnit(unit);
                     return true;
                 }
 

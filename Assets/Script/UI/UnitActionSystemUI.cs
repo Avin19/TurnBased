@@ -10,7 +10,7 @@ public class UnitActionSystemUI : MonoBehaviour
     [SerializeField] private Transform pfActionSystemContainer;
     [SerializeField] private TextMeshProUGUI actionPointText;
     private List<ActionButtonUI> actionButtonUIList;
-    
+
     private void Awake()
     {
         actionButtonUIList = new List<ActionButtonUI>();
@@ -19,13 +19,25 @@ public class UnitActionSystemUI : MonoBehaviour
     void Start()
     {
         UnityActionSystem.Instance.OnUnitSelection += OnSelectedUnitChanged;
-         UnityActionSystem.Instance.OnSelcetedActionChange += OnSelcetedActionChange;
-         UnityActionSystem.Instance.onActionChanged += OnActionChanged;
+        UnityActionSystem.Instance.OnSelcetedActionChange += OnSelcetedActionChange;
+        UnityActionSystem.Instance.onActionChanged += OnActionChanged;
+        TurnSystem.Instance.OnEndTurn += OnEndTurn;
+        Unit.OnAnyActionPointChange += OnAnyActionPointChange;
         CreateUnitActionButton();
         UpdateSelectedVisual();
-         UpdateActionPoint();
-       
+        UpdateActionPoint();
 
+
+    }
+
+    private void OnAnyActionPointChange(object sender, EventArgs e)
+    {
+        UpdateActionPoint();
+    }
+
+    private void OnEndTurn(object sender, EventArgs e)
+    {
+       UpdateActionPoint();
     }
 
     private void OnActionChanged(object sender, EventArgs e)
@@ -36,7 +48,7 @@ public class UnitActionSystemUI : MonoBehaviour
     private void OnSelcetedActionChange(object sender, EventArgs e)
     {
         UpdateSelectedVisual();
-         UpdateActionPoint();
+        UpdateActionPoint();
     }
 
     private void OnSelectedUnitChanged(object sender, EventArgs e)
@@ -49,35 +61,35 @@ public class UnitActionSystemUI : MonoBehaviour
     private void CreateUnitActionButton()
     {
 
-        foreach(Transform buttonTransform in pfActionSystemContainer)
+        foreach (Transform buttonTransform in pfActionSystemContainer)
         {
             Destroy(buttonTransform.gameObject);
         }
         actionButtonUIList.Clear();
         Unit selectedUnit = UnityActionSystem.Instance.GetSelectedUnit();
 
-        foreach(BaseAction baseAction in selectedUnit.GetBaseActions())
+        foreach (BaseAction baseAction in selectedUnit.GetBaseActions())
         {
-            Transform actionButtonTransfom =Instantiate(pfActionSystemUIButton, pfActionSystemContainer);
+            Transform actionButtonTransfom = Instantiate(pfActionSystemUIButton, pfActionSystemContainer);
             ActionButtonUI actionButtonUI = actionButtonTransfom.GetComponent<ActionButtonUI>();
-             actionButtonUIList.Add(actionButtonUI);
+            actionButtonUIList.Add(actionButtonUI);
             actionButtonTransfom.Find("Selected").gameObject.SetActive(false);
             actionButtonUI.SetBaseAction(baseAction);
-           
+
         }
     }
     private void UpdateSelectedVisual()
     {
-        foreach(ActionButtonUI actionButtonUI in actionButtonUIList)
+        foreach (ActionButtonUI actionButtonUI in actionButtonUIList)
         {
             actionButtonUI.transform.Find("Selected").gameObject.SetActive(false);
         }
-        
+
     }
 
     private void UpdateActionPoint()
     {
         Unit selectedunit = UnityActionSystem.Instance.GetSelectedUnit();
-        actionPointText.text = " Action Point : "+ selectedunit.GetActionPoint();
+        actionPointText.text = " Action Point : " + selectedunit.GetActionPoint();
     }
 }

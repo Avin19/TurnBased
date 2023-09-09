@@ -62,18 +62,24 @@
     <Compile Include="Assets\Script\Grid\GridObject.cs" />
     <Compile Include="Assets\Script\Grid\GridSystem.cs" />
     <Compile Include="Assets\Script\Grid\GridSystemVisualSingle.cs" />
+    <Compile Include="Assets\Script\UnitRagDollSpawner.cs" />
     <Compile Include="Assets\Script\UI\ActionBusyUI.cs" />
     <Compile Include="Assets\Script\MouseWorldPosition.cs" />
+    <Compile Include="Assets\Script\HealthSystem.cs" />
     <Compile Include="Assets\Script\Grid\LevelGRid.cs" />
     <Compile Include="Assets\Script\Action\BaseAction.cs" />
+    <Compile Include="Assets\Script\BulletProjectile.cs" />
     <Compile Include="Assets\Script\Testing.cs" />
     <Compile Include="Assets\Script\Action\MoveAction.cs" />
     <Compile Include="Assets\Script\UI\UnitActionSystemUI.cs" />
     <Compile Include="Assets\Script\Grid\GridDebugObject.cs" />
+    <Compile Include="Assets\Script\Action\ShootAction.cs" />
     <Compile Include="Assets\Script\UI\TurnSystemUI.cs" />
+    <Compile Include="Assets\Script\EnemyAI.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\UI\ActionButtonUI.cs" />
     <Compile Include="Assets\Script\TurnSystem.cs" />
+    <Compile Include="Assets\Script\UnitAnimator.cs" />
     <Compile Include="Assets\Script\UI\UnitSelectedVisual.cs" />
     <Compile Include="Assets\Script\Grid\GridPosition.cs" />
   </ItemGroup>

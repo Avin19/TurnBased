@@ -16,10 +16,14 @@ public class ActionButtonUI : MonoBehaviour
         textMeshPro = transform.Find("Text").GetComponent<TextMeshProUGUI>();
         button = GetComponent<Button>();
         selectedVisual = transform.Find("Selected").GetComponent<Transform>();
+       
     }
+
+   
 
     public void SetBaseAction(BaseAction baseAction)
     {
+         
         textMeshPro.text =  baseAction.GetActionName().ToUpper();
         button .onClick.AddListener(()=>{
             UnityActionSystem.Instance.SetSelectedAction(baseAction);
@@ -29,6 +33,7 @@ public class ActionButtonUI : MonoBehaviour
         });
 
     }
+  
 
 
    

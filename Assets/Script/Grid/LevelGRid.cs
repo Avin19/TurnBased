@@ -57,6 +57,15 @@ public class LevelGRid : MonoBehaviour
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.HasAnyUnit();
     }
+
+     public Unit GetUnitOnGridPosition(GridPosition gridPosition)
+    {
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        return gridObject.GetUnit();
+    }
+
+
+
     /*
     this function is same as the above function it is lambda expersion for the same 
         public GridPosition GetGridPosition( Vector3 worldPoistion)
@@ -67,4 +76,5 @@ public class LevelGRid : MonoBehaviour
 
 
     */
+
 }
