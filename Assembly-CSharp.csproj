@@ -68,9 +68,12 @@
     <Compile Include="Assets\Script\HealthSystem.cs" />
     <Compile Include="Assets\Script\Grid\LevelGRid.cs" />
     <Compile Include="Assets\Script\Action\BaseAction.cs" />
+    <Compile Include="Assets\Script\UnitRagDoll.cs" />
     <Compile Include="Assets\Script\BulletProjectile.cs" />
     <Compile Include="Assets\Script\Testing.cs" />
+    <Compile Include="Assets\Script\UnitWorldUi.cs" />
     <Compile Include="Assets\Script\Action\MoveAction.cs" />
+    <Compile Include="Assets\Script\CameraManager.cs" />
     <Compile Include="Assets\Script\UI\UnitActionSystemUI.cs" />
     <Compile Include="Assets\Script\Grid\GridDebugObject.cs" />
     <Compile Include="Assets\Script\Action\ShootAction.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Assets\Script\EnemyAI.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\UI\ActionButtonUI.cs" />
+    <Compile Include="Assets\Script\LookAtCamera.cs" />
     <Compile Include="Assets\Script\TurnSystem.cs" />
     <Compile Include="Assets\Script\UnitAnimator.cs" />
     <Compile Include="Assets\Script\UI\UnitSelectedVisual.cs" />

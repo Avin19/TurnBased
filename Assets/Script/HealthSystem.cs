@@ -8,11 +8,19 @@ public class HealthSystem : MonoBehaviour
 
     public event EventHandler OnDead;
     private int health =100;
+    private int healthMax;
+    public event EventHandler OnDamaged;
+
+    private void Awake()
+    {
+        healthMax = health;
+    }
 
 
     public void Damage( int damageAmount)
     {
         health -= damageAmount;
+        OnDamaged?.Invoke(this,EventArgs.Empty);
 
         if( health < 0)
         {
@@ -27,5 +35,9 @@ public class HealthSystem : MonoBehaviour
     private void Dead()
     {
         OnDead?.Invoke(this, EventArgs.Empty);
+    }
+    public float GetHealthAmount()
+    {
+        return (float) health/healthMax;
     }
 }

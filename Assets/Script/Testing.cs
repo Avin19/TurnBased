@@ -10,8 +10,8 @@ public class Testing : MonoBehaviour
     if(Input.GetKeyDown(KeyCode.T))
     {
         GridSystemVisual.Instance.HideAllGridPosition();
-        GridSystemVisual.Instance.ShowGridPositionList(
-        unit.GetMoveActionUnit().GetValidActionGridPosition());
+       // GridSystemVisual.Instance.ShowGridPositionList(
+        //unit.GetMoveActionUnit().GetValidActionGridPosition());
     }
    }
 }
