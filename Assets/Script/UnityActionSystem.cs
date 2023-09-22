@@ -33,7 +33,7 @@ public class UnityActionSystem : MonoBehaviour
     }
     private void Update()
     {
-        if(isBusy)
+        if (isBusy)
         {
             return;
         }
@@ -43,7 +43,7 @@ public class UnityActionSystem : MonoBehaviour
         {
 
             if (HandleUnitSelection()) return;
-           
+
             // if (selectedUnit.GetMoveActionUnit().IsVaildActionGridPosition(mouseGridPosition))
             // {
             //     SetBusy();
@@ -53,19 +53,19 @@ public class UnityActionSystem : MonoBehaviour
 
             // selectedUnit.GetComponent<MoveAction>().Move(MouseWorldPosition.Instance.GetMousePosition());
             // selectedUnit.Move(MouseWorldPosition.Instance.GetMousePosition());
-          }
-          if(EventSystem.current.IsPointerOverGameObject())
-          {
+        }
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
             return;
-          }
-          if(!TurnSystem.Instance.IsPlayerTurn())
-          {
+        }
+        if (!TurnSystem.Instance.IsPlayerTurn())
+        {
             return;
-          }
-          
-          HandleSelectedAction();
+        }
 
-       
+        HandleSelectedAction();
+
+
         if (Input.GetMouseButtonDown(1))
         {
             // SetBusy();
@@ -73,62 +73,62 @@ public class UnityActionSystem : MonoBehaviour
         }
     }
     private void HandleSelectedAction()
-    { 
-        if(Input.GetMouseButtonDown(0))
+    {
+        if (Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridPosition = LevelGRid.Instance.GetGridPosition(MouseWorldPosition.Instance.GetMousePosition());
-            if(selectedAction.IsVaildActionGridPosition(mouseGridPosition))
+            if (selectedAction.IsVaildActionGridPosition(mouseGridPosition))
             {
-                if(selectedUnit.TrySpendPointToTakeAnAction(selectedAction))
+                if (selectedUnit.TrySpendPointToTakeAnAction(selectedAction))
                 {
                     SetBusy();
                     selectedAction.TakeAction(mouseGridPosition, ClearBusy);
-                    onActionChanged?.Invoke(this,EventArgs.Empty);
+                    onActionChanged?.Invoke(this, EventArgs.Empty);
                 }
-                
+
             }
-            
+
         }
     }
     private void SetBusy()
     {
-        isBusy =true;
-        OnUnityBusy?.Invoke(this,isBusy);
+        isBusy = true;
+        OnUnityBusy?.Invoke(this, isBusy);
     }
     private void ClearBusy()
     {
         isBusy = false;
-        OnUnityBusy?.Invoke(this,isBusy);
-        
+        OnUnityBusy?.Invoke(this, isBusy);
+
     }
     private bool HandleUnitSelection()
     {
-        if (Input.GetMouseButtonDown(0))
+        Debug.Log("here");
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitSelectLayerMask))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitSelectLayerMask))
+            if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
             {
-                if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
+                if (unit == selectedUnit)
                 {
-                    if(unit == selectedUnit)
-                    {
-                        // then this unit is already selected 
-                        return false;
-                    }
-
-                    if(unit.IsEnemy())
-                    {
-
-                        //Clicked on the Emeny
-                        return false;
-                    }
-                    SelectedUnit(unit);
-                    return true;
+                    // then this unit is already selected 
+                    return false;
                 }
 
+                if (unit.IsEnemy())
+                {
 
+                    //Clicked on the Emeny
+                    return false;
+                }
+                SelectedUnit(unit);
+                return true;
             }
+
+
         }
+
         return false;
     }
 

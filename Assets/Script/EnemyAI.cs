@@ -64,6 +64,13 @@ public class EnemyAI : MonoBehaviour
     }
     private void TakeEnemyAiAction(Action onEnemyAIActionComplete)
     {
-            //
+            foreach(Unit enemyUnit in UnitManager.Instance.GetEnemyList())
+            {
+                TakeEnemyAiAction(enemyUnit, onEnemyAIActionComplete);
+            }
+    }
+    private void TakeEnemyAiAction(Unit unit, Action onEnemyAIActionComplete)
+    {
+        
     }
 }
