@@ -77,16 +77,19 @@ public class UnityActionSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridPosition = LevelGRid.Instance.GetGridPosition(MouseWorldPosition.Instance.GetMousePosition());
-            if (selectedAction.IsVaildActionGridPosition(mouseGridPosition))
+            if (!selectedAction.IsVaildActionGridPosition(mouseGridPosition))
             {
-                if (selectedUnit.TrySpendPointToTakeAnAction(selectedAction))
-                {
-                    SetBusy();
-                    selectedAction.TakeAction(mouseGridPosition, ClearBusy);
-                    onActionChanged?.Invoke(this, EventArgs.Empty);
-                }
+
+                return;
+            }
+            if (!selectedUnit.TrySpendPointToTakeAnAction(selectedAction))
+            {
+                return ;
 
             }
+            SetBusy();
+            selectedAction.TakeAction(mouseGridPosition, ClearBusy);
+            onActionChanged?.Invoke(this, EventArgs.Empty);
 
         }
     }
@@ -103,7 +106,7 @@ public class UnityActionSystem : MonoBehaviour
     }
     private bool HandleUnitSelection()
     {
-        Debug.Log("here");
+
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitSelectLayerMask))
@@ -135,7 +138,7 @@ public class UnityActionSystem : MonoBehaviour
     private void SelectedUnit(Unit unit)
     {
         selectedUnit = unit;
-        SetSelectedAction(unit.GetMoveActionUnit());
+        SetSelectedAction(unit.GetMoveAction());
         OnUnitSelection?.Invoke(this, EventArgs.Empty);
     }
     public void SetSelectedAction(BaseAction baseAction)

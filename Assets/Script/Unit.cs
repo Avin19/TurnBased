@@ -8,8 +8,8 @@ public class Unit : MonoBehaviour
 
     private const int ACTION_POINT_MAX = 2;
     public static event EventHandler OnAnyActionPointChange;
-    public static event EventHandler onAnyUitSpawned;
-    public static event EventHandler onAnyUnitDead;
+    public static event EventHandler OnAnyUitSpawned;
+    public static event EventHandler OnAnyUnitDead;
 
     private Vector3 targetPosition;
     private GridPosition gridPosition;
@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
         LevelGRid.Instance.AddUnitAtGridPosition(gridPosition, this);
         TurnSystem.Instance.OnEndTurn += OnEndTurn;
         healthSystem.OnDead += OnDead;
-        onAnyUitSpawned?.Invoke(this,EventArgs.Empty);
+        OnAnyUitSpawned?.Invoke(this,EventArgs.Empty);
     }
 
 
@@ -54,12 +54,12 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public SpinAction GetSpinActionUnit()
+    public SpinAction GetSpinAction()
     {
         return spinAction;
     }
 
-    public MoveAction GetMoveActionUnit()
+    public MoveAction GetMoveAction()
     {
         return moveAction;
     }
@@ -129,6 +129,6 @@ public class Unit : MonoBehaviour
     {
         LevelGRid.Instance.RemoveUnitAtGridPosition(gridPosition,this);
         Destroy(gameObject);
-        onAnyUnitDead?.Invoke(this, EventArgs.Empty);
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 }
