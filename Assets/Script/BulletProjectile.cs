@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
@@ -22,9 +21,9 @@ public class BulletProjectile : MonoBehaviour
         if (distaceBeforeMove < distaceAfterMove)
         {
             transform.position = targetPosition;
-            trailRenderer.transform.parent= null;
+            trailRenderer.transform.parent = null;
             Destroy(gameObject);
-            Instantiate(pfBulletHitVfx,targetPosition,Quaternion.identity);
+            Instantiate(pfBulletHitVfx, targetPosition, Quaternion.identity);
         }
 
 

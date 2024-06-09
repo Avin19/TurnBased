@@ -92,8 +92,9 @@
     <Compile Include="Assets\Script\UnitRagDoll.cs" />
     <Compile Include="Assets\Script\UnityActionSystem.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
-    <Compile Include="Assets\Script\Grid\LevelGRid.cs" />
+    <Compile Include="Assets\Script\Grid\LevelGrid.cs" />
     <Compile Include="Assets\Script\HealthSystem.cs" />
+    <Compile Include="Assets\Script\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

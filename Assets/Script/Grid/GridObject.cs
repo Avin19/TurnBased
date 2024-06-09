@@ -1,14 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class GridObject 
+/*
+This script is a GridObject that stores the information related to gridsystem and grid position and unit on the grid position
+
+*/
+public class GridObject
 {
     private GridSystem gridSystem;
     private GridPosition gridPosition;
     private List<Unit> unitList;
 
-    public GridObject(GridSystem gridSystem , GridPosition gridPosition)
+    public GridObject(GridSystem gridSystem, GridPosition gridPosition)
     {
         this.gridPosition = gridPosition;
         this.gridSystem = gridSystem;
@@ -16,17 +18,17 @@ public class GridObject
     }
     public override string ToString()
     {
-        string unitString ="";
-        foreach(Unit unit in unitList)
+        string unitString = "";
+        foreach (Unit unit in unitList)
         {
             unitString = unit + "\n";
         }
-        
-        return gridPosition.ToString()+" \n" + unitString;
+
+        return gridPosition.ToString() + " \n" + unitString;
     }
-    public void AddUnit( Unit unit)
+    public void AddUnit(Unit unit)
     {
-       unitList.Add(unit);
+        unitList.Add(unit);
     }
     public void RemoveUnit(Unit unit)
     {
@@ -42,7 +44,7 @@ public class GridObject
     }
     public Unit GetUnit()
     {
-        if(HasAnyUnit())
+        if (HasAnyUnit())
         {
             return unitList[0];
         }

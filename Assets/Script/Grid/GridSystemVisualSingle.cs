@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class GridSystemVisualSingle : MonoBehaviour
@@ -13,6 +12,6 @@ public class GridSystemVisualSingle : MonoBehaviour
     }
     public void Hide()
     {
-        meshRenderer.enabled=false;
+        meshRenderer.enabled = false;
     }
 }

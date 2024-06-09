@@ -1,7 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+/*
+
+This Script is connected to perfab of Cell to display the cell grid position
+
+
+*/
+
 public class GridDebugObject : MonoBehaviour
 {
   private GridObject gridObject;
@@ -10,9 +15,10 @@ public class GridDebugObject : MonoBehaviour
   public void SetGridObject(GridObject gridObject)
   {
     this.gridObject = gridObject;
-    //gridText.SetText()
+
   }
-  private void Update() {
+  private void Update()
+  {
     gridText.SetText(gridObject.ToString());
   }
 }

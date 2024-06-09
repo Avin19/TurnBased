@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class GridSystemVisual : MonoBehaviour
@@ -38,20 +36,20 @@ public class GridSystemVisual : MonoBehaviour
     void Start()
     {
         gridSystemVisualSinglesArray = new GridSystemVisualSingle[
-            LevelGRid.Instance.GetWidth(),
-            LevelGRid.Instance.GetHeight()
+            LevelGrid.Instance.GetWidth(),
+            LevelGrid.Instance.GetHeight()
         ];
-        for (int x = 0; x < LevelGRid.Instance.GetWidth(); x++)
+        for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
         {
-            for (int z = 0; z < LevelGRid.Instance.GetHeight(); z++)
+            for (int z = 0; z < LevelGrid.Instance.GetHeight(); z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                Transform gridSystemVisualSingleTransform = Instantiate(pfGridSystemViusalSingleTransform, LevelGRid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
+                Transform gridSystemVisualSingleTransform = Instantiate(pfGridSystemViusalSingleTransform, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
                 gridSystemVisualSinglesArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }
         UnityActionSystem.Instance.OnSelcetedActionChange += UnityActionSystem_OnSelectedActionChange;
-        LevelGRid.Instance.OnAnyUnitMovedGridPosition += LevelGRid_OnAnyUnitMovedGridPosition;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGRid_OnAnyUnitMovedGridPosition;
         UpdateVisual();
     }
 
@@ -79,8 +77,8 @@ public class GridSystemVisual : MonoBehaviour
         {
             for (int z = -range; z <= range; z++)
             {
-                GridPosition testGridPosition = gridPosition + new GridPosition(x,z);
-                if(!LevelGRid.Instance.IsVaildGridPosition(testGridPosition))
+                GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
+                if (!LevelGrid.Instance.IsVaildGridPosition(testGridPosition))
                 {
                     continue;
                 }

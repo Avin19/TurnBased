@@ -15,7 +15,7 @@ public class ShootAction : BaseAction
     private State state;
     public event EventHandler<OnShootingEventArgs> OnShooting;// can pass normal target unit using "" public event EventHandler<Unit> OnShooting; but using class to pass multiple arugments
 
-    public class OnShootingEventArgs: EventArgs
+    public class OnShootingEventArgs : EventArgs
     {
         public Unit targetUnit;
         public Unit shootingUnit;
@@ -98,7 +98,7 @@ public class ShootAction : BaseAction
             {
                 GridPosition offsetGridPosition = new GridPosition(x, z);
                 GridPosition testGridPosition = unitGridPosition + offsetGridPosition;
-                if (!LevelGRid.Instance.IsVaildGridPosition(testGridPosition))
+                if (!LevelGrid.Instance.IsVaildGridPosition(testGridPosition))
                 {
                     continue;
                 }
@@ -112,14 +112,14 @@ public class ShootAction : BaseAction
                     //Same Grid position where the unit is already at 
                     continue;
                 }
-                if (!LevelGRid.Instance.HasAnyUnitOnGridPosition(testGridPosition))
+                if (!LevelGrid.Instance.HasAnyUnitOnGridPosition(testGridPosition))
                 {
                     // Grid position is empty;
 
 
                     continue;
                 }
-                Unit tragetUnit = LevelGRid.Instance.GetUnitOnGridPosition(testGridPosition);
+                Unit tragetUnit = LevelGrid.Instance.GetUnitOnGridPosition(testGridPosition);
                 if (tragetUnit.IsEnemy() == unit.IsEnemy())
                 {
                     //Both unit are on same team
@@ -134,7 +134,8 @@ public class ShootAction : BaseAction
     }
     private void Shoot()
     {
-        OnShooting?.Invoke(this, new OnShootingEventArgs {
+        OnShooting?.Invoke(this, new OnShootingEventArgs
+        {
             targetUnit = targetUnit,
             shootingUnit = unit
         });
@@ -144,9 +145,9 @@ public class ShootAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action OnActionComplete)
     {
-        
 
-        targetUnit = LevelGRid.Instance.GetUnitOnGridPosition(gridPosition);
+
+        targetUnit = LevelGrid.Instance.GetUnitOnGridPosition(gridPosition);
         state = State.Aiming;
         float aimingStateTime = 1f;
         stateTimer = aimingStateTime;

@@ -76,7 +76,7 @@ public class UnityActionSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GridPosition mouseGridPosition = LevelGRid.Instance.GetGridPosition(MouseWorldPosition.Instance.GetMousePosition());
+            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorldPosition.Instance.GetMousePosition());
             if (!selectedAction.IsVaildActionGridPosition(mouseGridPosition))
             {
 
@@ -84,7 +84,7 @@ public class UnityActionSystem : MonoBehaviour
             }
             if (!selectedUnit.TrySpendPointToTakeAnAction(selectedAction))
             {
-                return ;
+                return;
 
             }
             SetBusy();
