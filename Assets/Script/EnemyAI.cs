@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -47,7 +45,7 @@ public class EnemyAI : MonoBehaviour
                 if (timer <= 0f)
                 {
                     state = State.Busy;
-                    if(TryTakeEnemyAIAction(SetSateTakingTurn))
+                    if (TryTakeEnemyAIAction(SetSateTakingTurn))
                     {
                         state = State.Busy;
                     }
